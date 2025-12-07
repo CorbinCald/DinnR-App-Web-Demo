@@ -32,6 +32,7 @@ function initCarousel() {
     
     const SWIPE_THRESHOLD = 50; // Minimum distance for swipe
     const VELOCITY_THRESHOLD = 0.5; // Minimum velocity for quick swipe
+    const SLIDE_GAP = 20; // Gap between slides (must match CSS)
     
     // Touch Events
     container.addEventListener('touchstart', handleDragStart, { passive: true });
@@ -72,7 +73,8 @@ function initCarousel() {
         currentX = getPositionX(e);
         const diff = currentX - startX;
         const containerWidth = container.offsetWidth;
-        const offset = -currentIndex * containerWidth + diff;
+        const slideWidth = containerWidth + SLIDE_GAP;
+        const offset = -currentIndex * slideWidth + diff;
         
         // Apply resistance at edges
         let resistance = 1;
@@ -115,7 +117,8 @@ function initCarousel() {
     function goToSlide(index) {
         currentIndex = Math.max(0, Math.min(index, slideCount - 1));
         const containerWidth = container.offsetWidth;
-        track.style.transform = `translateX(${-currentIndex * containerWidth}px)`;
+        const slideWidth = containerWidth + SLIDE_GAP;
+        track.style.transform = `translateX(${-currentIndex * slideWidth}px)`;
         
         // Update all dot indicators
         updateDots();

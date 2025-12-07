@@ -169,6 +169,7 @@ body {
 
 .carousel-track {
     display: flex;
+    gap: 20px;
     height: 100%;
     transition: transform var(--transition-medium);
     will-change: transform;
