@@ -287,6 +287,8 @@ body {
     align-items: center;
     cursor: pointer;
     transition: transform var(--transition-fast);
+    overflow: hidden;
+    border-radius: 15px;
 }
 
 .icon-wrapper:hover {
@@ -601,13 +603,9 @@ body {
     }
 }
 
-/* Icon hover animation for clickable icon */
+/* Icon hover animation for clickable icon - removed infinite pulse */
 .icon-wrapper.clickable .restaurant-icon {
     animation: none;
-}
-
-.icon-wrapper.clickable:hover .restaurant-icon {
-    animation: pulse 1s ease infinite;
 }
 
 /* ========================================
