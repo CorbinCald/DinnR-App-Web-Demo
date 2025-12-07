@@ -16,17 +16,30 @@ DinnR is a restaurant discovery widget that displays on an iPhone lock screen. U
 ## File Structure
 
 ```
-FigmaPrototype/
+DinnR Web App Demo/
 ├── index.html          # Main HTML structure
 ├── style.css           # All styling (iPhone frame, carousel, dialogs)
 ├── script.js           # Interactions (swipe, hover, dialog)
 ├── README.md           # This file
+├── teamWriteUp.md      # Development process documentation
+├── .gitignore          # Git ignore file
 ├── finalAssets/        # All production images
 │   ├── *Icon.png       # Restaurant icons (103x103px)
 │   ├── *BackdropImage.png  # Widget backgrounds
 │   └── spaghettilandFullDialogueFrame.png  # Dialog content
-├── Components/         # Legacy Figma exports (Italian backdrop only)
+├── Components/         # Legacy Figma exports
+│   ├── phoneFrameItalian/  # Italian widget assets
+│   │   ├── ItalianWidgetBackdrop.png
+│   │   ├── ItalianWidgetFullFrame.png
+│   │   └── *Icon.png   # Individual restaurant icons
+│   └── phoneFrameChinese/  # Chinese widget exports
+│       ├── chineseWidgetFullFrame.png
+│       ├── global.css
+│       ├── index.html
+│       ├── style.css
+│       └── styleguide.css
 └── Examples/           # Design reference images
+    └── BuiltOutExample.png
 ```
 
 ## How to Run
@@ -63,7 +76,8 @@ FigmaPrototype/
 | Class | Purpose |
 |-------|---------|
 | `.phone-frame` | iPhone device container (393x852px) |
-| `.carousel-slide` | Individual menu slide |
+| `.carousel-track` | Carousel container with 20px gap between slides |
+| `.carousel-slide` | Individual menu slide (363x199px) |
 | `.icon-wrapper` | Restaurant icon container with hover effects |
 | `.icon-wrapper.clickable` | Interactive icon (Spaghetti Land) |
 | `.hover-label` | Text that appears on hover |
@@ -96,7 +110,22 @@ Tested on modern browsers (Chrome, Firefox, Safari, Edge). Uses:
 - Touch Events API
 - Backdrop Filter (for dock blur)
 
+## Technical Details
+
+### Carousel Implementation
+- Uses CSS Flexbox with `gap: 20px` for spacing between slides
+- JavaScript calculates translation with `SLIDE_GAP` constant (must match CSS)
+- Supports touch and mouse drag events
+- Smooth transitions with resistance at edges
+
+### File Organization
+- **Production files**: Root level (index.html, style.css, script.js)
+- **Production assets**: finalAssets/ directory
+- **Legacy exports**: Components/ directory (original Figma exports)
+- **Documentation**: README.md and teamWriteUp.md
+
 ## Credits
 
 - Design: Figma prototype
+- Development: Enhanced with LLM assistance (Claude Opus 4.5)
 - Fonts: Google Fonts (Baloo 2, Inter)
